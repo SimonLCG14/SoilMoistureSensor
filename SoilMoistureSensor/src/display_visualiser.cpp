@@ -36,7 +36,7 @@ void display_measurement(int measurement, std::optional<String> infoMsg){
     if(infoMsg.has_value()){
         display.println(F("-------------"));
         display.println(infoMsg.value());
-        display.println(F("------------------"));
+        display.println(F("-----------------"));
     }
 
     display.display();
