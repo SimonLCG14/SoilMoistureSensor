@@ -2,13 +2,13 @@
 
 #include <Arduino.h>
 
-void setupPins(){
+void initPins(){
     pinMode(redPin, OUTPUT);
     pinMode(greenPin, OUTPUT);
     pinMode(bluePin, OUTPUT);
 }
 
-void setColor(int red, int green, int blue){
+void displayColor(int red, int green, int blue){
     analogWrite(redPin, red);
     analogWrite(greenPin, green);
     analogWrite(bluePin, blue);

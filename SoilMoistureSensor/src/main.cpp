@@ -1,17 +1,28 @@
 #include <Arduino.h>
+
 #include "light_visualiser.h"
+#include "moisture_measurement.h"
+
+const int OK_BOUND = 40;
+const int BAD_BOUND = 25;
 
 void setup() {
-  setupPins();
+  Serial.begin(9600);
+  initPins();
 }
 
 void loop() {
-  setColor(255, 0, 0);
-  delay(1000);
-  setColor(0, 255, 0);
-  delay(1000);
-  setColor(0, 0, 255);
-  delay(1000);
-  setColor(100, 100, 25);
-  delay(1000);
+  int measurement = measure();
+
+  if(measurement >= OK_BOUND){
+    displayColor(0, 255, 0);
+  }
+  else if(measurement < OK_BOUND && measurement >= BAD_BOUND){
+    displayColor(255, 80, 0);
+  }
+  else{
+    // Red
+    displayColor(255, 0, 0);
+    // + Sound alarm
+  }
 }
